@@ -11,7 +11,7 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - run: docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"
       - run: *MasterBuild
 workflows:
   version: 2
