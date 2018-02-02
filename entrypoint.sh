@@ -12,6 +12,7 @@ SECRETS=/run/secrets/
 [ -f $SECRETS/STORJ_BRIDGE_PASS ] && STORJ_BRIDGE_PASS=$(cat $SECRETS/STORJ_BRIDGE_PASS)
 [ -f $SECRETS/STORJ_ENCRYPTION_KEY ] && STORJ_ENCRYPTION_KEY=$(cat $SECRETS/STORJ_ENCRYPTION_KEY)
 
+ls -la /run/secrets
 echo $STORJ_BRIDGE_USER
 rm /etc/nginx/nginx.conf
 storj download-file $CONFIG_BUCKET_ID $CONFIG_FILE_ID /etc/nginx/nginx.conf
