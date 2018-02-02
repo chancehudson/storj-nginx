@@ -1,0 +1,25 @@
+# multiline build commands should be put here to avoid a bug with multine
+# strings in lists
+master_build: &MasterBuild |
+  docker build . -t jchancehud/storj-nginx:latest
+  docker push jchancehud/storj-nginx:latest
+
+# circleci config
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - run: *MasterBuild
+workflows:
+  version: 2
+  build_all:
+    jobs:
+      - build:
+          context: org-global
+          filters:
+            branches:
+              only:
+                - master
