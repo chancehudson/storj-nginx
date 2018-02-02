@@ -13,6 +13,9 @@ SECRETS=/run/secrets
 [ -f $SECRETS/STORJ_ENCRYPTION_KEY ] && export STORJ_ENCRYPTION_KEY=`cat $SECRETS/STORJ_ENCRYPTION_KEY`
 
 rm -rf /etc/nginx/nginx.conf
+echo $STORJ_BRIDGE_USER
+echo $STORJ_BRIDGE_PASS
+echo $STORJ_ENCRYPTION_KEY
 storj download-file $CONFIG_BUCKET_ID $CONFIG_FILE_ID /etc/nginx/nginx.conf
 
 exec nginx -g "daemon off;"
