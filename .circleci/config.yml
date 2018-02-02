@@ -15,7 +15,7 @@ jobs:
       - run: *MasterBuild
 workflows:
   version: 2
-  build:
+  build_all:
     jobs:
       - build:
           context: org-global
